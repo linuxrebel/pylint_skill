@@ -67,23 +67,34 @@ brew install pylint
 
 ### 3. Add to Claude Desktop
 
-Copy the skill to your Claude Desktop skills directory:
+Copy only the necessary skill files to your Claude Desktop skills directory:
 
 **macOS/Linux:**
 ```bash
-cp -r . ~/.config/claude/skills/pylint-skill/
+mkdir -p ~/.config/claude/skills/pylint-skill
+cp SKILL.md pylint.skill .pylintrc.example LICENSE.txt ~/.config/claude/skills/pylint-skill/
 ```
 
 **Windows:**
 ```powershell
-Copy-Item -Recurse . "$env:APPDATA\Claude\skills\pylint-skill\"
+$skillDir = "$env:APPDATA\Claude\skills\pylint-skill"
+New-Item -ItemType Directory -Force -Path $skillDir
+Copy-Item SKILL.md, pylint.skill, .pylintrc.example, LICENSE.txt $skillDir
 ```
 
 Then restart Claude Desktop.
 
+**Files needed in skills directory:**
+- `SKILL.md` — Skill definition and documentation
+- `pylint.skill` — Implementation details
+- `.pylintrc.example` — Example configuration
+- `LICENSE.txt` — License file
+
+Do NOT copy `.git/`, `README.md`, or other files to keep the installation clean.
+
 ### 4. Add to Claude Code / Cowork
 
-If using Claude Code (VS Code, JetBrains, Terminal) or Cowork, place the skill in your local skills directory:
+If using Claude Code (VS Code, JetBrains, Terminal) or Cowork, copy the necessary skill files to your local skills directory:
 
 **VS Code / JetBrains / Terminal:**
 ```bash
@@ -92,16 +103,25 @@ If using Claude Code (VS Code, JetBrains, Terminal) or Cowork, place the skill i
 # ~/Library/Application\ Support/Claude/skills/ (macOS)
 # %APPDATA%\Claude\skills\ (Windows)
 
-cp -r . ~/.config/claude/skills/pylint-skill/
+mkdir -p ~/.config/claude/skills/pylint-skill
+cp SKILL.md pylint.skill .pylintrc.example LICENSE.txt ~/.config/claude/skills/pylint-skill/
 ```
 
 Or set via environment variable:
 ```bash
 export CLAUDE_SKILLS_DIR="/path/to/skills"
-cp -r . $CLAUDE_SKILLS_DIR/pylint-skill/
+mkdir -p $CLAUDE_SKILLS_DIR/pylint-skill
+cp SKILL.md pylint.skill .pylintrc.example LICENSE.txt $CLAUDE_SKILLS_DIR/pylint-skill/
 ```
 
 Then restart Claude Code or your IDE extension.
+
+## Platform Support
+
+- ✅ **Claude Desktop** (macOS, Linux, Windows)
+- ✅ **Claude Code** (VS Code, JetBrains, Terminal)
+- ✅ **Cowork** (CLI)
+- ❌ **Mobile** (iOS, Android) — Local skills not supported on mobile apps
 
 ## Usage
 
