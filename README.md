@@ -70,7 +70,7 @@ brew install pylint
 1. Open Claude Desktop Settings → Skills
 2. Click the "Add" button and select "Upload a skill"
 3. Upload this repository as a `.zip` file (or just upload `SKILL.md`)
-4. Claude Desktop will install the skill automatically
+4. Claude Desktop will install the skill automatically and it's available immediately—no restart needed
 
 **Files to upload:**
 - `SKILL.md` — Skill definition (required)
