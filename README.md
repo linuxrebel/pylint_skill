@@ -295,24 +295,6 @@ git commit -m "feat: add ACME Corp pylint standards"
 
 Then distribute to your team as a custom skill.
 
-## Customizing for Your Team/Project
-
-Create a `.pylintrc` file in your project root with your team's standards:
-
-```ini
-[FORMAT]
-indent-string='    '  # 4 spaces
-
-[NAMING]
-variable-naming-style=camelCase
-
-[DESIGN]
-max-line-length=100
-```
-
-Commit it to version control, and pylint will automatically find and use it. No skill modifications needed.
-
-## Tips
 
 1. **Disable noisy checks** — Suppress `missing-docstring` for codebases without docs
 2. **Use plugins for domain rules** — Install `pylint-django`, `pylint-flask`, etc. for framework-specific checks
