@@ -233,47 +233,6 @@ Example output:
 | **Refactor (R)** | Too complex, too many args, duplicate code |
 | **Informational (I)** | Suppressed messages, local disables |
 
-## Customization
-
-### Project-Level Config (`.pylintrc`)
-
-Create a `.pylintrc` file in your project root to customize pylint behavior. The skill automatically detects and uses it.
-
-**Example: Enforce camelCase and 4-space indentation**
-
-```ini
-[FORMAT]
-indent-string='    '  # 4 spaces instead of 2
-
-[NAMING]
-variable-naming-style=camelCase
-argument-naming-style=camelCase
-function-naming-style=camelCase
-
-[DESIGN]
-max-line-length=100
-max-locals=15
-max-branches=12
-```
-
-See [`.pylintrc.example`](.pylintrc.example) in this repo for more options.
-
-### Company/Team Standards
-
-For firm-wide standards:
-
-1. **Version control your `.pylintrc`** in your project or organization repo
-2. **Document overrides** — Link to your config in team docs
-3. **Use pylint plugins** — Install custom rule packages:
-   ```bash
-   pip install pylint-django pylint-flask  # etc.
-   ```
-   Then reference in `.pylintrc`:
-   ```ini
-   [MASTER]
-   load-plugins=pylint_django,pylint_flask
-   ```
-
 ## License
 
 MIT — See LICENSE.txt
