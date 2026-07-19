@@ -26,19 +26,19 @@ cd pylint-skill
 
 Choose one of the following installation methods:
 
-**Option A: User-level pip install (recommended for single user)**
+**User-level pip install:**
 ```bash
 pip install pylint --user
 ```
 
-**Option B: System-wide pip install**
+**System-wide pip install:**
 ```bash
 pip install pylint
 # or with sudo if needed
 sudo pip install pylint
 ```
 
-**Option C: Package manager (distro-specific)**
+**Package manager (distro-specific):**
 
 Fedora/RHEL/CentOS:
 ```bash
@@ -64,8 +64,6 @@ macOS (Homebrew):
 ```bash
 brew install pylint
 ```
-
-Choose the method that best fits your setup. Option A (user-level pip) is recommended if you only need pylint for your personal projects.
 
 ### 3. Add to Claude Desktop
 
