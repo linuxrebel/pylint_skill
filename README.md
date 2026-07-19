@@ -72,18 +72,18 @@ Copy only the necessary skill files to your Claude Desktop skills directory:
 **macOS/Linux:**
 ```bash
 mkdir -p ~/.config/claude/skills/pylint-skill
-cp SKILL.md pylint.skill pylintrc.example ~/.config/claude/skills/pylint-skill/
+cp SKILL.md pylint.skill pylintrc ~/.config/claude/skills/pylint-skill/
 cd ~/.config/claude/skills/pylint-skill/
-mv pylintrc.example .pylintrc.example
+mv pylintrc .pylintrc
 ```
 
 **Windows:**
 ```powershell
 $skillDir = "$env:APPDATA\Claude\skills\pylint-skill"
 New-Item -ItemType Directory -Force -Path $skillDir
-Copy-Item SKILL.md, pylint.skill, pylintrc.example $skillDir
+Copy-Item SKILL.md, pylint.skill, pylintrc $skillDir
 cd $skillDir
-Rename-Item pylintrc.example .pylintrc.example
+Rename-Item pylintrc .pylintrc
 ```
 
 Then restart Claude Desktop.
@@ -91,9 +91,9 @@ Then restart Claude Desktop.
 **Files needed in skills directory:**
 - `SKILL.md` — Skill definition and documentation
 - `pylint.skill` — Implementation details
-- `.pylintrc.example` — Example configuration (renamed from `pylintrc.example`)
+- `.pylintrc` — Pylint configuration (created by renaming `pylintrc` from repo)
 
-**Note:** The repository contains `pylintrc.example` (without the dot prefix) for visibility in version control. When installing to your skills directory, rename it to `.pylintrc.example` (with the dot) to make it a hidden configuration file. Do NOT copy `.git/`, `README.md`, or other files to keep the installation clean.
+**Note:** The repository contains `pylintrc` (without the dot prefix) for visibility in version control. When installing, rename it to `.pylintrc` (with the dot) to make it a hidden configuration file. Do NOT copy `.git/`, `README.md`, or other files to keep the installation clean.
 
 ### 4. Add to Claude Code / Cowork
 
@@ -107,18 +107,18 @@ If using Claude Code (VS Code, JetBrains, Terminal) or Cowork, copy the necessar
 # %APPDATA%\Claude\skills\ (Windows)
 
 mkdir -p ~/.config/claude/skills/pylint-skill
-cp SKILL.md pylint.skill pylintrc.example ~/.config/claude/skills/pylint-skill/
+cp SKILL.md pylint.skill pylintrc ~/.config/claude/skills/pylint-skill/
 cd ~/.config/claude/skills/pylint-skill/
-mv pylintrc.example .pylintrc.example
+mv pylintrc .pylintrc
 ```
 
 Or set via environment variable:
 ```bash
 export CLAUDE_SKILLS_DIR="/path/to/skills"
 mkdir -p $CLAUDE_SKILLS_DIR/pylint-skill
-cp SKILL.md pylint.skill pylintrc.example $CLAUDE_SKILLS_DIR/pylint-skill/
+cp SKILL.md pylint.skill pylintrc $CLAUDE_SKILLS_DIR/pylint-skill/
 cd $CLAUDE_SKILLS_DIR/pylint-skill/
-mv pylintrc.example .pylintrc.example
+mv pylintrc .pylintrc
 ```
 
 Then restart Claude Code or your IDE extension.
@@ -295,15 +295,44 @@ git commit -m "feat: add ACME Corp pylint standards"
 
 Then distribute to your team as a custom skill.
 
+## Customizing for Your Team/Project
+
+### Default Behavior
+
+By default, the skill uses the `.pylintrc` file distributed with the installation (renamed from `pylintrc` in the repo).
+
+### Extending with Your Own .pylintrc
+
+If you need custom pylint rules for your team or organization:
+
+1. **Copy the default configuration** as a starting point:
+   ```bash
+   cp ~/.config/claude/skills/pylint-skill/.pylintrc my-project/.pylintrc
+   ```
+
+2. **Customize your `.pylintrc`** with your team's standards:
+   ```ini
+   [FORMAT]
+   indent-string='    '  # 4 spaces
+   
+   [NAMING]
+   variable-naming-style=camelCase
+   ```
+
+3. **Update the skill to use your config** (optional):
+   - Edit `pylint.skill` in your skills directory
+   - Find the line: `pylint --output-format=json --exit-zero <path>`
+   - Change to: `pylint --rcfile=/path/to/your/.pylintrc --output-format=json --exit-zero <path>`
+   
+   **Note:** Only modify the skill if you need to enforce a specific `.pylintrc` globally. Most users can simply commit `.pylintrc` to their project root, and pylint will find it automatically.
+
 ## Tips
 
-1. **Start with `.pylintrc.example`** — Copy it to your project as `.pylintrc` and customize for your team
-2. **Disable noisy checks** — Suppress `missing-docstring` for codebases without docs
-3. **Version control your config** — Commit `.pylintrc` to your repo so the whole team uses the same rules
-4. **Use plugins for domain rules** — Install `pylint-django`, `pylint-flask`, etc. for framework-specific checks
-5. **CI integration** — Use pylint output in CI/CD pipelines to enforce standards
-6. **Combined review** — Pair with `/code-review` skill for human judgment + automated checks
-7. **Fork for company standards** — Create a company-specific variant with your `.pylintrc` baked in
+1. **Disable noisy checks** — Suppress `missing-docstring` for codebases without docs
+2. **Use plugins for domain rules** — Install `pylint-django`, `pylint-flask`, etc. for framework-specific checks
+3. **CI integration** — Use pylint output in CI/CD pipelines to enforce standards
+4. **Combined review** — Pair with `/code-review` skill for human judgment + automated checks
+5. **Fork for company standards** — Create a company-specific variant with your `.pylintrc` baked in
 
 ## Related Skills
 
