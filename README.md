@@ -274,12 +274,6 @@ For firm-wide standards:
    load-plugins=pylint_django,pylint_flask
    ```
 
-## Related Skills
-
-- `/code-review` — Manual code review for security, performance, correctness
-- `/debug` — Fix specific errors and issues
-- `/test` — Verify code correctness with unit tests
-
 ## License
 
 MIT — See LICENSE.txt
