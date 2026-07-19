@@ -115,6 +115,29 @@ cp SKILL.md pylint.skill .pylintrc.example $CLAUDE_SKILLS_DIR/pylint-skill/
 
 Then restart Claude Code or your IDE extension.
 
+### 5. Add to iOS/Android (Claude Desktop App)
+
+On mobile devices, Claude Desktop stores skills in the app's local storage. Use the Claude app's file management:
+
+**iOS:**
+1. Open the Claude app
+2. Go to Settings → Skills
+3. Tap "Add Skill" or "Import Skill"
+4. Copy the contents of `SKILL.md` and `pylint.skill` into the respective fields
+5. Add `.pylintrc.example` as a reference file if the app supports it
+
+**Android:**
+1. Open the Claude app
+2. Navigate to Settings → Skills
+3. Tap the "+" button to add a new skill
+4. Paste the contents of `SKILL.md` and `pylint.skill`
+5. Save the skill configuration
+
+Alternatively, if using iCloud Drive (iOS) or Google Drive (Android) integration:
+1. Upload `SKILL.md`, `pylint.skill`, and `.pylintrc.example` to your cloud storage
+2. Open Claude app and link to your cloud drive
+3. Import the skill files from there
+
 ## Platform Support
 
 - ✅ **Claude Desktop** (macOS, Linux, Windows, iOS, Android)
