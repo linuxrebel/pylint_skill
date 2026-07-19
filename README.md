@@ -274,27 +274,6 @@ For firm-wide standards:
    load-plugins=pylint_django,pylint_flask
    ```
 
-### Extending the Skill
-
-Fork this repo to create a company-specific variant:
-
-```bash
-git clone https://github.com/linuxrebel/pylint-skill.git pylint-skill-acme
-cd pylint-skill-acme
-# Add your .pylintrc with company standards
-git add .pylintrc
-git commit -m "feat: add ACME Corp pylint standards"
-```
-
-Then distribute to your team as a custom skill.
-
-
-1. **Disable noisy checks** — Suppress `missing-docstring` for codebases without docs
-2. **Use plugins for domain rules** — Install `pylint-django`, `pylint-flask`, etc. for framework-specific checks
-3. **CI integration** — Use pylint output in CI/CD pipelines to enforce standards
-4. **Combined review** — Pair with `/code-review` skill for human judgment + automated checks
-5. **Fork for company standards** — Create a company-specific variant with your `.pylintrc` baked in
-
 ## Related Skills
 
 - `/code-review` — Manual code review for security, performance, correctness
