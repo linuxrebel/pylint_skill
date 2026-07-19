@@ -72,28 +72,21 @@ Copy only the necessary skill files to your Claude Desktop skills directory:
 **macOS/Linux:**
 ```bash
 mkdir -p ~/.config/claude/skills/pylint-skill
-cp SKILL.md pylint.skill pylintrc ~/.config/claude/skills/pylint-skill/
-cd ~/.config/claude/skills/pylint-skill/
-mv pylintrc .pylintrc
+cp SKILL.md pylint.skill ~/.config/claude/skills/pylint-skill/
 ```
 
 **Windows:**
 ```powershell
 $skillDir = "$env:APPDATA\Claude\skills\pylint-skill"
 New-Item -ItemType Directory -Force -Path $skillDir
-Copy-Item SKILL.md, pylint.skill, pylintrc $skillDir
-cd $skillDir
-Rename-Item pylintrc .pylintrc
+Copy-Item SKILL.md, pylint.skill $skillDir
 ```
 
 Then restart Claude Desktop.
 
-**Files needed in skills directory:**
+**Files needed:**
 - `SKILL.md` — Skill definition and documentation
 - `pylint.skill` — Implementation details
-- `.pylintrc` — Pylint configuration (created by renaming `pylintrc` from repo)
-
-**Note:** The repository contains `pylintrc` (without the dot prefix) for visibility in version control. When installing, rename it to `.pylintrc` (with the dot) to make it a hidden configuration file. Do NOT copy `.git/`, `README.md`, or other files to keep the installation clean.
 
 ### 4. Add to Claude Code / Cowork
 
@@ -315,3 +308,18 @@ MIT — See LICENSE.txt
 ## Author
 
 James Sparenberg (@linuxrebel)
+
+## Customization (Optional)
+
+`pylintrc.example` in the repository shows example pylint configuration options. If you want to customize pylint rules for your project:
+
+1. Copy the example as a starting point:
+   ```bash
+   cp pylintrc.example ~/.config/claude/skills/pylint-skill/.pylintrc
+   ```
+
+2. Edit `.pylintrc` with your team's standards
+
+3. Pylint will automatically find and use it
+
+That's it.
