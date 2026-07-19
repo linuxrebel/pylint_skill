@@ -118,10 +118,11 @@ Then restart Claude Code or your IDE extension.
 
 ## Platform Support
 
-- ✅ **Claude Desktop** (macOS, Linux, Windows)
+- ✅ **Claude Desktop** (macOS, Linux, Windows, iOS, Android)
 - ✅ **Claude Code** (VS Code, JetBrains, Terminal)
 - ✅ **Cowork** (CLI)
-- ❌ **Mobile** (iOS, Android) — Local skills not supported on mobile apps
+
+All platforms support local skills installation.
 
 ## Usage
 
