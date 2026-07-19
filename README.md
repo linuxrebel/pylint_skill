@@ -73,12 +73,9 @@ brew install pylint
 4. Claude Desktop will install the skill automatically and it's available immediately—no restart needed
 
 **Files to upload:**
-- `SKILL.md` — Skill definition (required)
-- `pylint.skill` — Implementation details (recommended)
+- pylint-skills.zip
 
-Or upload as a `.zip` containing both files.
-
-### 4. Add to Claude Code / Cowork
+### 4. Add to Claude CLI
 
 Copy the skill files to your local skills directory:
 
