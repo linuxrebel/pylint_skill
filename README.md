@@ -297,6 +297,26 @@ Then distribute to your team as a custom skill.
 6. **Combined review** — Pair with `/code-review` skill for human judgment + automated checks
 7. **Fork for company standards** — Create a company-specific variant with your `.pylintrc` baked in
 
+## Distribution & Discovery
+
+### Submit to Official Marketplace
+
+To make this skill available in the official Claude marketplace:
+
+1. **Anthropic Plugins Directory** — Submit to [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) using their plugin directory submission form
+2. **Community Marketplace** — List on [anthropics/claude-plugins-community](https://github.com/anthropics/claude-plugins-community) after passing validation
+3. **Independent Marketplaces** — Submit to community skill registries like [agentskill.club](https://www.agentskill.club/) or [claudeskills.info](https://claudeskills.info/)
+
+### Community Promotion
+
+Share on:
+- GitHub (link in repo)
+- Hacker News
+- Product Hunt
+- Reddit (r/Claude, r/OpenAI)
+- Twitter/X
+- Dev.to
+
 ## Related Skills
 
 - `/code-review` — Manual code review for security, performance, correctness
