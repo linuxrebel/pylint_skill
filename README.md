@@ -297,34 +297,20 @@ Then distribute to your team as a custom skill.
 
 ## Customizing for Your Team/Project
 
-### Default Behavior
+Create a `.pylintrc` file in your project root with your team's standards:
 
-By default, the skill uses the `.pylintrc` file distributed with the installation (renamed from `pylintrc` in the repo).
+```ini
+[FORMAT]
+indent-string='    '  # 4 spaces
 
-### Extending with Your Own .pylintrc
+[NAMING]
+variable-naming-style=camelCase
 
-If you need custom pylint rules for your team or organization:
+[DESIGN]
+max-line-length=100
+```
 
-1. **Copy the default configuration** as a starting point:
-   ```bash
-   cp ~/.config/claude/skills/pylint-skill/.pylintrc my-project/.pylintrc
-   ```
-
-2. **Customize your `.pylintrc`** with your team's standards:
-   ```ini
-   [FORMAT]
-   indent-string='    '  # 4 spaces
-   
-   [NAMING]
-   variable-naming-style=camelCase
-   ```
-
-3. **Update the skill to use your config** (optional):
-   - Edit `pylint.skill` in your skills directory
-   - Find the line: `pylint --output-format=json --exit-zero <path>`
-   - Change to: `pylint --rcfile=/path/to/your/.pylintrc --output-format=json --exit-zero <path>`
-   
-   **Note:** Only modify the skill if you need to enforce a specific `.pylintrc` globally. Most users can simply commit `.pylintrc` to their project root, and pylint will find it automatically.
+Commit it to version control, and pylint will automatically find and use it. No skill modifications needed.
 
 ## Tips
 
