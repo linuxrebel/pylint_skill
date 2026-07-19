@@ -72,14 +72,14 @@ Copy only the necessary skill files to your Claude Desktop skills directory:
 **macOS/Linux:**
 ```bash
 mkdir -p ~/.config/claude/skills/pylint-skill
-cp SKILL.md pylint.skill .pylintrc.example LICENSE.txt ~/.config/claude/skills/pylint-skill/
+cp SKILL.md pylint.skill .pylintrc.example ~/.config/claude/skills/pylint-skill/
 ```
 
 **Windows:**
 ```powershell
 $skillDir = "$env:APPDATA\Claude\skills\pylint-skill"
 New-Item -ItemType Directory -Force -Path $skillDir
-Copy-Item SKILL.md, pylint.skill, .pylintrc.example, LICENSE.txt $skillDir
+Copy-Item SKILL.md, pylint.skill, .pylintrc.example $skillDir
 ```
 
 Then restart Claude Desktop.
@@ -88,9 +88,8 @@ Then restart Claude Desktop.
 - `SKILL.md` — Skill definition and documentation
 - `pylint.skill` — Implementation details
 - `.pylintrc.example` — Example configuration
-- `LICENSE.txt` — License file
 
-Do NOT copy `.git/`, `README.md`, or other files to keep the installation clean.
+Do NOT copy `.git/`, `README.md`, `LICENSE.txt`, or other files to keep the installation clean.
 
 ### 4. Add to Claude Code / Cowork
 
@@ -104,14 +103,14 @@ If using Claude Code (VS Code, JetBrains, Terminal) or Cowork, copy the necessar
 # %APPDATA%\Claude\skills\ (Windows)
 
 mkdir -p ~/.config/claude/skills/pylint-skill
-cp SKILL.md pylint.skill .pylintrc.example LICENSE.txt ~/.config/claude/skills/pylint-skill/
+cp SKILL.md pylint.skill .pylintrc.example ~/.config/claude/skills/pylint-skill/
 ```
 
 Or set via environment variable:
 ```bash
 export CLAUDE_SKILLS_DIR="/path/to/skills"
 mkdir -p $CLAUDE_SKILLS_DIR/pylint-skill
-cp SKILL.md pylint.skill .pylintrc.example LICENSE.txt $CLAUDE_SKILLS_DIR/pylint-skill/
+cp SKILL.md pylint.skill .pylintrc.example $CLAUDE_SKILLS_DIR/pylint-skill/
 ```
 
 Then restart Claude Code or your IDE extension.
