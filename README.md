@@ -65,9 +65,22 @@ macOS (Homebrew):
 brew install pylint
 ```
 
-### 3. Add to Claude Code / Cowork
+### 3. Add to Claude Desktop
 
-Copy only the necessary skill files to your local skills directory (`.claude/skills/`):
+1. Open Claude Desktop Settings → Skills
+2. Click the "Add" button and select "Upload a skill"
+3. Upload this repository as a `.zip` file (or just upload `SKILL.md`)
+4. Claude Desktop will install the skill automatically
+
+**Files to upload:**
+- `SKILL.md` — Skill definition (required)
+- `pylint.skill` — Implementation details (recommended)
+
+Or upload as a `.zip` containing both files.
+
+### 4. Add to Claude Code / Cowork
+
+Copy the skill files to your local skills directory:
 
 **macOS/Linux:**
 ```bash
@@ -82,29 +95,11 @@ New-Item -ItemType Directory -Force -Path $skillDir
 Copy-Item SKILL.md, pylint.skill $skillDir
 ```
 
-Then start a new Claude Code session. The skill will be available automatically on the next run
+Then start a new Claude Code session. The skill will be available automatically on the next run.
 
 **Files needed:**
 - `SKILL.md` — Skill definition and documentation
 - `pylint.skill` — Implementation details
-
-
-mkdir -p .claude/skills/pylint
-cp SKILL.md pylint.skill pylintrc .claude/skills/pylint/
-cd .claude/skills/pylint/
-mv pylintrc .pylintrc
-```
-
-Or set via environment variable:
-```bash
-export CLAUDE_SKILLS_DIR="/path/to/skills"
-mkdir -p $CLAUDE_SKILLS_DIR/pylint-skill
-cp SKILL.md pylint.skill pylintrc $CLAUDE_SKILLS_DIR/pylint-skill/
-cd $CLAUDE_SKILLS_DIR/pylint-skill/
-mv pylintrc .pylintrc
-```
-
-Then restart Claude Code or your IDE extension.
 
 ### 5. Add to iOS/Android (Claude Desktop App)
 
