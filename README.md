@@ -71,13 +71,13 @@ Copy only the necessary skill files to your Claude Desktop skills directory:
 
 **macOS/Linux:**
 ```bash
-mkdir -p ~/.config/claude/skills/pylint-skill
-cp SKILL.md pylint.skill ~/.config/claude/skills/pylint-skill/
+mkdir -p .claude/skills/pylint
+cp SKILL.md pylint.skill .claude/skills/pylint/
 ```
 
 **Windows:**
 ```powershell
-$skillDir = "$env:APPDATA\Claude\skills\pylint-skill"
+$skillDir = "$env:USERPROFILE\.claude\skills\pylint"
 New-Item -ItemType Directory -Force -Path $skillDir
 Copy-Item SKILL.md, pylint.skill $skillDir
 ```
@@ -99,9 +99,9 @@ If using Claude Code (VS Code, JetBrains, Terminal) or Cowork, copy the necessar
 # ~/Library/Application\ Support/Claude/skills/ (macOS)
 # %APPDATA%\Claude\skills\ (Windows)
 
-mkdir -p ~/.config/claude/skills/pylint-skill
-cp SKILL.md pylint.skill pylintrc ~/.config/claude/skills/pylint-skill/
-cd ~/.config/claude/skills/pylint-skill/
+mkdir -p .claude/skills/pylint
+cp SKILL.md pylint.skill pylintrc .claude/skills/pylint/
+cd .claude/skills/pylint/
 mv pylintrc .pylintrc
 ```
 
