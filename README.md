@@ -72,14 +72,18 @@ Copy only the necessary skill files to your Claude Desktop skills directory:
 **macOS/Linux:**
 ```bash
 mkdir -p ~/.config/claude/skills/pylint-skill
-cp SKILL.md pylint.skill .pylintrc.example ~/.config/claude/skills/pylint-skill/
+cp SKILL.md pylint.skill pylintrc.example ~/.config/claude/skills/pylint-skill/
+cd ~/.config/claude/skills/pylint-skill/
+mv pylintrc.example .pylintrc.example
 ```
 
 **Windows:**
 ```powershell
 $skillDir = "$env:APPDATA\Claude\skills\pylint-skill"
 New-Item -ItemType Directory -Force -Path $skillDir
-Copy-Item SKILL.md, pylint.skill, .pylintrc.example $skillDir
+Copy-Item SKILL.md, pylint.skill, pylintrc.example $skillDir
+cd $skillDir
+Rename-Item pylintrc.example .pylintrc.example
 ```
 
 Then restart Claude Desktop.
@@ -87,9 +91,9 @@ Then restart Claude Desktop.
 **Files needed in skills directory:**
 - `SKILL.md` — Skill definition and documentation
 - `pylint.skill` — Implementation details
-- `.pylintrc.example` — Example configuration
+- `.pylintrc.example` — Example configuration (renamed from `pylintrc.example`)
 
-Do NOT copy `.git/`, `README.md`, `LICENSE.txt`, or other files to keep the installation clean.
+**Note:** The repository contains `pylintrc.example` (without the dot prefix) for visibility in version control. When installing to your skills directory, rename it to `.pylintrc.example` (with the dot) to make it a hidden configuration file. Do NOT copy `.git/`, `README.md`, or other files to keep the installation clean.
 
 ### 4. Add to Claude Code / Cowork
 
@@ -103,14 +107,18 @@ If using Claude Code (VS Code, JetBrains, Terminal) or Cowork, copy the necessar
 # %APPDATA%\Claude\skills\ (Windows)
 
 mkdir -p ~/.config/claude/skills/pylint-skill
-cp SKILL.md pylint.skill .pylintrc.example ~/.config/claude/skills/pylint-skill/
+cp SKILL.md pylint.skill pylintrc.example ~/.config/claude/skills/pylint-skill/
+cd ~/.config/claude/skills/pylint-skill/
+mv pylintrc.example .pylintrc.example
 ```
 
 Or set via environment variable:
 ```bash
 export CLAUDE_SKILLS_DIR="/path/to/skills"
 mkdir -p $CLAUDE_SKILLS_DIR/pylint-skill
-cp SKILL.md pylint.skill .pylintrc.example $CLAUDE_SKILLS_DIR/pylint-skill/
+cp SKILL.md pylint.skill pylintrc.example $CLAUDE_SKILLS_DIR/pylint-skill/
+cd $CLAUDE_SKILLS_DIR/pylint-skill/
+mv pylintrc.example .pylintrc.example
 ```
 
 Then restart Claude Code or your IDE extension.
