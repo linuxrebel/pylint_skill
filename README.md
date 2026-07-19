@@ -65,9 +65,9 @@ macOS (Homebrew):
 brew install pylint
 ```
 
-### 3. Add to Claude Desktop
+### 3. Add to Claude Code / Cowork
 
-Copy only the necessary skill files to your Claude Desktop skills directory:
+Copy only the necessary skill files to your local skills directory (`.claude/skills/`):
 
 **macOS/Linux:**
 ```bash
@@ -88,16 +88,6 @@ Then completely close Claude Desktop (not just the window—fully exit the appli
 - `SKILL.md` — Skill definition and documentation
 - `pylint.skill` — Implementation details
 
-### 4. Add to Claude Code / Cowork
-
-If using Claude Code (VS Code, JetBrains, Terminal) or Cowork, copy the necessary skill files to your local skills directory:
-
-**VS Code / JetBrains / Terminal:**
-```bash
-# Skills are typically stored in:
-# ~/.config/claude/skills/ (Linux)
-# ~/Library/Application\ Support/Claude/skills/ (macOS)
-# %APPDATA%\Claude\skills\ (Windows)
 
 mkdir -p .claude/skills/pylint
 cp SKILL.md pylint.skill pylintrc .claude/skills/pylint/
