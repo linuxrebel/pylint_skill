@@ -281,18 +281,3 @@ MIT — See LICENSE.txt
 ## Author
 
 James Sparenberg (@linuxrebel)
-
-## Customization (Optional)
-
-`pylintrc.example` in the repository shows example pylint configuration options. If you want to customize pylint rules for your project:
-
-1. Copy the example as a starting point:
-   ```bash
-   cp pylintrc.example ~/.config/claude/skills/pylint-skill/.pylintrc
-   ```
-
-2. Edit `.pylintrc` with your team's standards
-
-3. Pylint will automatically find and use it
-
-That's it.
