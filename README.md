@@ -82,7 +82,7 @@ New-Item -ItemType Directory -Force -Path $skillDir
 Copy-Item SKILL.md, pylint.skill $skillDir
 ```
 
-Then completely close Claude Desktop (not just the window—fully exit the application) and reopen it. Claude needs a complete restart to recognize the new skill.
+Then start a new Claude Code session. The skill will be available automatically on the next run
 
 **Files needed:**
 - `SKILL.md` — Skill definition and documentation
