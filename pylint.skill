@@ -1,0 +1,122 @@
+---
+name: pylint-linter
+description: Pylint code quality analyzer for Python files
+version: 1.0.0
+author: James Sparenberg
+license: MIT
+---
+
+# Pylint Skill
+
+## Trigger
+
+When the user asks to lint Python code, check code quality, run pylint, or analyze Python files for violations.
+
+Example triggers:
+- "lint this Python file"
+- "run pylint on my code"
+- "check code quality"
+- "analyze these files for style issues"
+- "I want to see pylint errors"
+
+## Execution
+
+1. **Validate input**: Check that the file/directory path exists and contains Python files
+2. **Check pylint installation**: Install if missing via `pip install pylint`
+3. **Run pylint analysis**: Execute pylint with JSON output for structured parsing
+4. **Parse results**: Extract errors, warnings, conventions, and refactor suggestions
+5. **Generate report**: Format findings with severity levels and actionable suggestions
+
+## Output
+
+Structured report with:
+- Overall score (0.0-10.0)
+- Message counts by category
+- Critical errors highlighted
+- Organized by file and line number
+- Severity indicators (🔴 Error, 🟡 Warning, 🔵 Convention, 🟣 Refactor)
+- Tips for fixing each issue
+
+## Implementation Steps
+
+### Step 1: File Validation
+- Check if provided path exists
+- Verify it's a .py file or directory containing .py files
+- Calculate number of files to analyze
+
+### Step 2: Check pylint
+- Run `pylint --version` to confirm installation
+- If missing, offer to install: `pip install pylint --user`
+
+### Step 3: Run Analysis
+Execute:
+```bash
+pylint --output-format=json --exit-zero <path>
+```
+
+The `--exit-zero` flag ensures pylint returns 0 even if violations found (prevents shell errors).
+The `--output-format=json` gives structured output for parsing.
+
+### Step 4: Parse JSON Output
+Extract from pylint JSON:
+- File path
+- Line/column numbers
+- Message text
+- Message symbol (C0111, E0602, etc)
+- Message type (error, warning, convention, refactor)
+
+### Step 5: Format Report
+Organize by:
+1. Summary (score, message counts, files analyzed)
+2. Critical issues (errors only)
+3. Warnings
+4. Convention violations (style issues)
+5. Refactor suggestions
+6. Passing files (if any)
+
+## Options
+
+### Custom Configuration
+If `.pylintrc` exists in project root, use it automatically:
+```bash
+pylint --rcfile=.pylintrc --output-format=json --exit-zero <path>
+```
+
+### Filter by Type
+- Errors only: `--disable=C,W,R,I`
+- Warnings only: `--disable=E,C,R,I`
+- Convention only: `--disable=E,W,R,I`
+
+### Exclude Patterns
+Common exclusions to suggest:
+- `.git/`, `__pycache__/`, `.venv/`, `venv/`
+- Tests folder (if user prefers)
+
+## Error Handling
+
+- **No Python files**: "No Python files found in the specified path"
+- **Invalid path**: "Path does not exist or is not readable"
+- **pylint not installed**: Offer installation command
+- **Parse errors**: Fall back to raw output if JSON parsing fails
+
+## Example Command Sequence
+
+```bash
+# Check installation
+pylint --version
+
+# Run analysis on single file
+pylint --output-format=json --exit-zero app.py
+
+# Run on directory with config
+pylint --rcfile=.pylintrc --output-format=json --exit-zero src/
+
+# Run with specific disables
+pylint --disable=missing-docstring --output-format=json --exit-zero module.py
+```
+
+## Related Skills
+
+- `/code-review` — Manual code review with human judgment
+- `/debug` — Fix specific errors and issues
+- `/test` — Verify code correctness with tests
