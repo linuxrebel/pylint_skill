@@ -1,4 +1,4 @@
-# pylint-skill
+# pylint-skill v1.0.0
 
 A Claude skill for linting Python code with pylint, providing structured analysis of style violations, errors, and code quality issues.
 
