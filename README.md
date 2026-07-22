@@ -18,11 +18,11 @@ This skill integrates pylint into Claude workflows, enabling:
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/linuxrebel/pylint-skill.git
-cd pylint-skill
+git clone https://github.com/linuxrebel/pylint_skill.git
+cd pylint_skill
 ```
 
-### 2. Install pylint
+### 2. Installing pylint (the app not the skill)
 
 Choose one of the following installation methods:
 
